@@ -47,3 +47,37 @@ Todas las entidades cuentan con el parametro created_at de tipo timestampz con l
 
 La autorizacion se maneja mediante un `access_token` Bearer que tiene un tiempo de expiracion definido en el fichero de entorno `.env` 
 
+
+## Rutas
+
+POST /wires/auth/signup
+
+body:
+```json
+{
+	"username" : "string",
+	"email" : "string",
+	"password" : "string",
+	"fullname" : "string"
+}
+```
+
+POST - wires/auth/signin
+
+body:
+```json
+{
+	"username" : "string",
+	"password" : "string"
+}
+```
+
+POST wires/messages
+
+body:
+```json
+{
+	"title" : "string",
+	"content" : "string"
+}
+```
