@@ -44,3 +44,6 @@ yarn-error.log
 /packages/graphql
 /benchmarks/memory
 build/config\.gypi
+
+# built
+/dist
