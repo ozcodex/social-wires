@@ -1,6 +1,6 @@
 import { Controller, Get, Post, Body, Patch, Param, Delete, UseInterceptors, UseGuards } from '@nestjs/common';
 import { MessagesService } from './services/messages.service';
-import { CreateMessageDto, UpdateMessageDto } from './dto/message.dto';
+import { CreateMessageDto, UpdateMessageDto, FindMessageDto } from './dto/message.dto';
 import { LoginInterceptor } from './pipes/login.interceptor';
 import { AuthGuard } from '@nestjs/passport';
 
@@ -15,12 +15,13 @@ export class MessagesController {
     return this.messagesService.create(createMessageDto);
   }
 
-  @Get()
-  findAll() {
-    return this.messagesService.findAll();
+  @Get("me")
+  @UseInterceptors(LoginInterceptor)
+  findAll(@Body() findMessageDto: FindMessageDto) {
+    return this.messagesService.findAll(findMessageDto.user);
   }
 
-  @Get(':id')
+  @Get('me/:id')
   findOne(@Param('id') id: string) {
     return this.messagesService.findOne(+id);
   }

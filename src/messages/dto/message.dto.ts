@@ -12,3 +12,8 @@ export class CreateMessageDto {
 }
 
 export class UpdateMessageDto extends PartialType(CreateMessageDto) {}
+
+export class FindMessageDto {
+  @Optional()
+  user: string;
+}

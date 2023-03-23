@@ -10,15 +10,14 @@ export class AuthController {
 
   @UseInterceptors(ClassSerializerInterceptor)
   @Post('signup')
-  async signup(@Body() body: CreateUserDto) {
-    console.log(body)
-    return this.authService.createUser(body);
+  async signup(@Body() createUserDto: CreateUserDto) {
+    return this.authService.createUser(createUserDto);
   }
 
   @UseGuards(AuthGuard('local'))
   @Post('signin')
-  async signin(@Body() body: LoginDto) {
-    const jwt = await this.authService.login(body)
+  async signin(@Body() loginDto: LoginDto) {
+    const jwt = await this.authService.login(loginDto)
     return {
       ...jwt,
       'message': 'Successfully logged in',

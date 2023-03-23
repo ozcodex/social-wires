@@ -11,10 +11,13 @@ export class Message {
 
   @Column()
   content: string;
+
+  @Column()
+  user: string;
     
   @CreateDateColumn({ type: "timestamptz", default: () => "CURRENT_TIMESTAMP(6)" })
   public created_at: Date;
 
-  @ManyToOne(() => User)
-  public user: string
+  @ManyToOne(() => User, (user)=> user.messages)
+  public author: User
 }

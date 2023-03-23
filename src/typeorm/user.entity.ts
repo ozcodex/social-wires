@@ -1,5 +1,6 @@
 import { Exclude } from 'class-transformer';
-import { Column, Entity, PrimaryGeneratedColumn, CreateDateColumn, Index } from 'typeorm';
+import { Column, Entity, PrimaryGeneratedColumn, CreateDateColumn, Index, OneToMany } from 'typeorm';
+import { Message } from './message.entity';
 
 @Entity()
 export class User {
@@ -34,5 +35,8 @@ export class User {
 
   @CreateDateColumn({ type: "timestamptz", default: () => "CURRENT_TIMESTAMP(6)" })
   public created_at: Date;
+
+  @OneToMany(() => Message, (message) => message.author)
+    messages: Message[]
 
 }
