@@ -1,6 +1,6 @@
 import { Controller, Post, Body, UseInterceptors, ClassSerializerInterceptor, NotAcceptableException, UseGuards } from '@nestjs/common';
 import { CreateUserDto, LoginDto } from './dto/user.dto';
-import { AuthService } from './auth.service'
+import { AuthService } from './services/auth.service'
 import { AuthGuard } from '@nestjs/passport';
 import { ConfigService } from '@nestjs/config';
 
