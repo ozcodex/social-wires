@@ -1,4 +1,5 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Exclude } from 'class-transformer';
+import { Column, Entity, PrimaryGeneratedColumn, CreateDateColumn } from 'typeorm';
 
 @Entity()
 export class User {
@@ -23,9 +24,14 @@ export class User {
   })
   email: string;
 
+  @Exclude()
   @Column({
     nullable: false,
     default: '',
   })
   password: string;
+
+  @CreateDateColumn({ type: "timestamptz", default: () => "CURRENT_TIMESTAMP(6)" })
+  public created_at: Date;
+
 }

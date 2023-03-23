@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { User } from 'src/typeorm';
 import { Repository } from 'typeorm';
-import { CreateUserDto } from './dto/user.dto';
+import { CreateUserDto} from './dto/user.dto';
 
 @Injectable()
 export class AuthService {
@@ -10,7 +10,7 @@ export class AuthService {
     @InjectRepository(User) private readonly userRepository: Repository<User>,
   ) {}
       
-  createUser(createUserDto: CreateUserDto) {
+  createUser(createUserDto: CreateUserDto){
     const newUser = this.userRepository.create(createUserDto);
     return this.userRepository.save(newUser);
   }
