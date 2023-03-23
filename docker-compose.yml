@@ -3,8 +3,10 @@ services:
   db:
     image: postgres
     volumes:
-      - ./postgres/var/lib/postgresql/data
+      - ./postgres:/var/lib/postgresql/data
+    ports:
+      - "5433:5432"
     environment:
       POSTGRES_USER: socialwires
-      POSTGRES_PASSWORD: 1234
+      POSTGRES_PASSWORD: pg1234
       POSTGRES_DB: socialwires

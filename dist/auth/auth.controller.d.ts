@@ -1,4 +1,7 @@
-import { SignupBody } from './dto/signup.dto';
+import { CreateUserDto, UserDto } from './dto/user.dto';
+import { AuthService } from './auth.service';
 export declare class AuthController {
-    signup(body: SignupBody): Promise<void>;
+    private readonly authService;
+    constructor(authService: AuthService);
+    signup(body: CreateUserDto): Promise<UserDto>;
 }
