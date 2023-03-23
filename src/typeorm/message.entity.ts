@@ -5,13 +5,10 @@ import { Column, Entity, PrimaryGeneratedColumn, CreateDateColumn, ManyToOne } f
 export class Message {
   @PrimaryGeneratedColumn()
   id: number;
-  
-  @Column({
-    nullable: false,
-    default: '',
-  })
-  fullname: string;
-  
+
+  @Column()
+  title: string;
+
   @Column()
   content: string;
     
@@ -19,5 +16,5 @@ export class Message {
   public created_at: Date;
 
   @ManyToOne(() => User)
-  public user: User
+  public user: string
 }

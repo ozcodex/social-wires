@@ -1,11 +1,18 @@
 import { Injectable } from '@nestjs/common';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Repository } from 'typeorm';
+import { Message } from 'src/typeorm/message.entity';
 import { CreateMessageDto, UpdateMessageDto } from '../dto/message.dto';
 
 @Injectable()
 export class MessagesService {
+  constructor(
+    @InjectRepository(Message) private readonly messageRepository: Repository<Message>
+  ) { }
+
   create(createMessageDto: CreateMessageDto) {
-    console.log(createMessageDto)
-    return 'This action adds a new message';
+    const newMessage = this.messageRepository.create(createMessageDto);
+    return this.messageRepository.save(newMessage);
   }
 
   findAll() {
@@ -24,3 +31,4 @@ export class MessagesService {
     return `This action removes a #${id} message`;
   }
 }
+
