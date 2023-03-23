@@ -14,17 +14,17 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.AuthController = void 0;
 const common_1 = require("@nestjs/common");
-const signup_interface_1 = require("./interfaces/signup.interface");
+const signup_dto_1 = require("./dto/signup.dto");
 let AuthController = class AuthController {
     async signup(body) {
         console.log(body);
     }
 };
 __decorate([
-    (0, common_1.Post)('singup'),
+    (0, common_1.Post)('signup'),
     __param(0, (0, common_1.Body)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [signup_interface_1.SignupBody]),
+    __metadata("design:paramtypes", [signup_dto_1.SignupBody]),
     __metadata("design:returntype", Promise)
 ], AuthController.prototype, "signup", null);
 AuthController = __decorate([
