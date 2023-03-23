@@ -4,6 +4,7 @@ import { AppService } from './app.service';
 import { AuthModule } from './auth/auth.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigModule, ConfigService } from '@nestjs/config';
+import { MessagesModule } from './messages/messages.module';
 import entities from './typeorm';
 
 
@@ -23,7 +24,8 @@ import entities from './typeorm';
         synchronize: true,
       }),
       inject: [ConfigService],
-    }),],
+    }),
+    MessagesModule,],
   controllers: [AppController],
   providers: [AppService],
 })

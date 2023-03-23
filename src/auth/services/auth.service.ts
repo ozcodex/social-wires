@@ -18,7 +18,7 @@ export class AuthService {
     return this.userRepository.save(newUser);
   }
 
-  findOneByUsername(username: string) {
+  public findOneByUsername(username: string) {
     return this.userRepository.findOneBy({ username })
   }
 
@@ -34,8 +34,9 @@ export class AuthService {
     }
     return null;
   }
-  async login(user: LoginDto) {
-    const payload = { username: user.username };
+  async login(login: LoginDto) {
+    const user = await this.findOneByUsername(login.username);
+    const payload = { username: user?.username, user_id: user?.id };
     const access_token = this.jwtService.sign(payload)
     return {
       access_token,
