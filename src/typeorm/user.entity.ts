@@ -1,5 +1,5 @@
 import { Exclude } from 'class-transformer';
-import { Column, Entity, PrimaryGeneratedColumn, CreateDateColumn } from 'typeorm';
+import { Column, Entity, PrimaryGeneratedColumn, CreateDateColumn, Index } from 'typeorm';
 
 @Entity()
 export class User {
@@ -12,6 +12,7 @@ export class User {
   })
   fullname: string;
 
+  @Index({ unique: true })
   @Column({
     nullable: false,
     default: '',

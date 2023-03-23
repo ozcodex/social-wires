@@ -11,3 +11,10 @@ export class CreateUserDto {
   @IsNotEmpty()
   fullname: string;
 }
+
+export class LoginDto {
+  @IsNotEmpty()
+  username: string;
+  @IsNotEmpty()
+  password: string;
+}
